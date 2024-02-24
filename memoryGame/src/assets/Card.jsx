@@ -1,31 +1,30 @@
 import { useEffect, useState } from "react";
-import getRandomSprite from "../util/spriteGetter";
 
 
 
-export default function Card(){
+
+export default function Card({pokemonId, sprite, gameLogic, gameSet, setSprites}){
     // console.log(getRandomSprite())
 
-    const [sprite, setSprite] = useState(null)
 
-    useEffect(() =>{
-        const getId = async () => {
-            const [id, newSprite] = await getRandomSprite(10);
-            // newSprite.then(s => setSprite(s))
-            setSprite(newSprite[2])
-            // console.log(id)
+    async function clickHandler(){
+        let clicked = gameLogic.clickChecker(pokemonId)
+        if(clicked){
+            gameSet(true)
+        }else{
+            await gameLogic.generateNew()
+            const newSprites = {...gameLogic.getPokeDict()}
+            setSprites(newSprites)
+
         }
-        getId().catch(console.error)
 
-    },[])
+    }
+
 
     return(
-        <section className="card-container" onClick={()=>alert(sprite)}>
+        <section className="card-container" onClick={()=>clickHandler()}>
             {sprite && <img src={sprite} alt="pokemon"/> || 'loading...'}
-            {/* {sprite && <img src={sprite} alt="pokemon"/> || 'loading...'}
-            {sprite && <img src={sprite} alt="pokemon"/> || 'loading...'}
-            {sprite && <img src={sprite} alt="pokemon"/> || 'loading...'}
-            {sprite && <img src={sprite} alt="pokemon"/> || 'loading...'} */}
+            {pokemonId && <p>Pokemon No: {pokemonId}</p>}
         </section>
 
 

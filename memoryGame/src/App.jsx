@@ -5,37 +5,41 @@ import gameLogic from './helper/gameLogic'
 import './App.css'
 import Header from './assets/Header'
 import CardContainer from './assets/CardContainer'
-import Card from './assets/Card'
 
 
 const newGame = gameLogic()
 
 
 function App() {
-  const [gameState, gameSet] = useState(0)
+  const [gameState, gameSet] = useState(false)
   const [score, setScore] = useState(0)
   const [sprites, setSprites] = useState({})
 
+
+  // console.log('parent rerendered')
+
   useEffect(()=>{
     
-    setScore(newGame.getScore())
+    if(gameState){
+      newGame.resetGame()
+      gameSet(false)
+    }
 
     const setup = async() => {
-      await newGame.generateNew(score)
+      await newGame.generateNew()
       setSprites(newGame.getPokeDict())
     }
     setup()
 
-  }, [score])
+  }, [gameState])
+
 
   return (
     <>
       <h1>Memory Game</h1>
       <h2>score {score}</h2>
-      <Header gameState={gameState} gameSet={gameSet}/>
-      <CardContainer pokemonDict={sprites} setScore={setScore} gameLogic={newGame}/>
-      <Card/>
-
+      <Header gameSet={gameSet} setScore={setScore} setSprites={setSprites} gameLogic={newGame}/>
+      <CardContainer sprites={sprites} setScore={setScore} gameLogic={newGame} gameSet={gameSet} setSprites={setSprites}/>
     
     </>
   )

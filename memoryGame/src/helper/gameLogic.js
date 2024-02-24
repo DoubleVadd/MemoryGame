@@ -14,14 +14,14 @@ const gameLogic = () => {
 
     // Generate two arrays, Array of Pokemon Id's and Array of Pokemon Sprite urls
     // For Each of the Id's initialise the clicks to prevent game over
-    const generateNew = async (count) => {
+    const generateNew = async (count=1) => {
         [pokemonId, pokemonSprite] = await getRandomSprite(count, pokemonId, pokemonSprite)
         
         for(const id in pokemonId){
-            pokemonDict[pokemonId[id]] = pokemonSprite[id]
             if(id in clickedPokemon){
                 continue
             }else{
+                pokemonDict[pokemonId[id]] = pokemonSprite[id]
                 clickedPokemon[id] = false
             }
         }
@@ -40,6 +40,7 @@ const gameLogic = () => {
             }
             return true
         }else{
+            clickedPokemon[clickID]=true
             score += 1
             return false
         }
@@ -53,6 +54,7 @@ const gameLogic = () => {
         score = 0
         pokemonId = []
         pokemonSprite = []
+        pokemonDict = {}
         clickedPokemon = {}
         generateNew()
     }

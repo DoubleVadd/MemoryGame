@@ -1,17 +1,45 @@
 import { useEffect, useState } from "react";
+import { arrShuffle } from "../util/shuffleArr";
+
+
+import Card from './Card'
 
 
 
 
-export default function CardContainer({pokemonDict, setScore, gameLogic}){
 
-    console.log(pokemonDict)
+export default function CardContainer({sprites, setScore, gameLogic, gameSet, setSprites}){
 
 
+    const [cards, setCards] = useState([])
+
+    const cardCreator = (sprites) => {
+        const pokemonArray = []
+        Object.keys(sprites).forEach((key) =>{
+            pokemonArray.push(
+                <li key={key}>
+                    <Card pokemonId={key} sprite={sprites[key]} gameLogic={gameLogic} gameSet={gameSet} setSprites={setSprites}/>
+                </li>
+            )
+
+        })
+        return <ul>{arrShuffle(pokemonArray)}</ul>
+    }
+
+    useEffect(() =>{
+        setCards(cardCreator(sprites))
+    }, [sprites])
+    
+    
+
+    // console.log(sprites)
+    console.log('rendered cardHolder')
+    
     return(
         <>
-            <h1>wow</h1>
-            <button onClick={()=>{setScore(gameLogic.getScore() + 1)}}>+1</button>
+            <ul>
+                {cards}
+            </ul>
         </>
         
     )

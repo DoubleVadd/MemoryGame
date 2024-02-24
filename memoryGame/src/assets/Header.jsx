@@ -1,13 +1,14 @@
 import { useState } from "react"
 
-export default function Header({gameState, gameSet}){
+export default function Header({gameSet, setScore,setSprites, gameLogic}){
   
 
-    const[highScore, scoreSet] = useState(0)
-
     function resetHandler(){
-        scoreSet(gameState)
-        gameSet(0)
+        gameLogic.resetGame()
+        setScore(0)
+        setSprites({})
+        gameSet(true)
+        console.log('Game Reset')
     
     }
 
@@ -16,9 +17,8 @@ export default function Header({gameState, gameSet}){
     return(
         <header className="Header">
             <h1>Pokedex Memory</h1>
-            <p>
-                Current HighScore: {highScore}
-            </p>
+            <h2>Max Score: {gameLogic.getMaxScore()}</h2>
+            <h2>Current Score: {gameLogic.getScore()}</h2>
 
             <button
                 onClick={() => resetHandler()}

@@ -16,23 +16,13 @@ function getRandomSprite(count=1, idArr=[], spriteArr=[]){
 
     while(idArr.length < generationCount){
         const pokemonID = Math.floor(Math.random()*1025);
-        if(idArr.indexOf(pokemonID) === -1) {
+        if(idArr.indexOf(pokemonID) === -1 && pokemonID) {
             idArr.push(pokemonID);
-            // const newSprite = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonID}.png`);
-            // spriteArr.push(newSprite.url)
             const newSprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonID}.png`;
             spriteArr.push(newSprite)
         
-        
         }
     }
-    
-    // console.log(idArr);
-
-    // const pokemonID = Math.floor(Math.random()*1025);
-    // const newSprite = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonID}.png`);
-    // // console.log(newSprite);
-
 
     return [idArr , spriteArr]
 }
