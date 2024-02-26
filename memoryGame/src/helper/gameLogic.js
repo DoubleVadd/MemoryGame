@@ -1,6 +1,8 @@
 import getRandomSprite from "../util/spriteGetter"
 
-
+//  This file contains teh general game loop of the memory game
+// Single instance of this function operates the whole game, keeping track of
+// Scores, Clicks, and sprite information.
 
 const gameLogic = () => {
 

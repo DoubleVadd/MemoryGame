@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+#root{
+
+    /* font */
+    font-family: "Pixelify Sans", sans-serif;
+
+    /* Colour Profile */
+    --primary-color: rgb(232, 232, 238);
+    
+
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    min-height: 100vh;
+
+}

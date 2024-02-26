@@ -1,0 +1,55 @@
+/* This file contains the styling for header, footer and dialog options */
+
+
+
+.headerStyle, .footerStyle{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    /* border-bottom: 2px dotter black; */
+    outline-style: dashed;
+    background-color: white;
+    overflow-x: auto;
+}
+
+.footerStyle{
+    padding: 2rem;
+}
+
+.headerStyle button{
+    font-size: 1rem;
+    padding: 0.7rem;
+    align-items: center;
+    /* border-bottom: 2px dotter black; */
+    font-family: inherit;
+    border: none;
+    outline-style: dashed;
+    border-radius: 0.8rem;
+}
+
+.headerStyle button:hover{
+    cursor: pointer;
+    outline-style:groove;
+
+}
+
+.headerStyle dialog{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* height: 10rem;
+    width: 10rem; */
+    padding: 2rem;
+}
+
+.headerStyle dialog button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0;
+    text-transform:uppercase;
+}

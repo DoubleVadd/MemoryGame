@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import gameLogic from './helper/gameLogic'
 
 import './App.css'
+import basic from './styles/basic.module.css'
+
 import Header from './assets/Header'
 import CardContainer from './assets/CardContainer'
 
@@ -36,10 +38,9 @@ function App() {
 
   return (
     <>
-      <h1>Memory Game</h1>
-      <h2>score {score}</h2>
-      <Header gameSet={gameSet} setScore={setScore} setSprites={setSprites} gameLogic={newGame}/>
-      <CardContainer sprites={sprites} setScore={setScore} gameLogic={newGame} gameSet={gameSet} setSprites={setSprites}/>
+      <Header className="AppTop" gameSet={gameSet} setScore={setScore} setSprites={setSprites} gameLogic={newGame}/>
+      <CardContainer className="AppMid" sprites={sprites} setScore={setScore} gameLogic={newGame} gameSet={gameSet} setSprites={setSprites}/>
+      <footer className={basic.footerStyle}>Thanks for Playing!</footer>
     
     </>
   )

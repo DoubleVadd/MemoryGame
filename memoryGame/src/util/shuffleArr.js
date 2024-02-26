@@ -1,3 +1,9 @@
+/**
+ * Function that shuffles the array and returns the array
+ * 
+ * @param {Shuffle} array 
+ * @returns shuffled Array
+ */
 export function arrShuffle(array){
     let currentIndex = array.length,  randomIndex;
 
