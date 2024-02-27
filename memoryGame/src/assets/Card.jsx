@@ -14,6 +14,7 @@ export default function Card({pokemonId, sprite, gameLogic, gameSet, setSprites}
     async function clickHandler(){
         let clicked = gameLogic.clickChecker(pokemonId)
         if(clicked){
+            alert(`Game Over`)
             gameSet(true)
         }else{
             await gameLogic.generateNew()
@@ -26,7 +27,7 @@ export default function Card({pokemonId, sprite, gameLogic, gameSet, setSprites}
 
 
     return(
-        <section className={cardStyle['pokemonCard']} onClick={()=>clickHandler()}>
+        <section className={`${cardStyle['pokemonCard']}`}  onClick={()=>clickHandler()}>
             {/* {!sprite && <img src={zero} alt="'loading...'"/> } */}
             {sprite && <img src={sprite} alt="pokemon"/> || <p>Loading...</p>}
             {pokemonId && <p>No: {pokemonId}</p>}

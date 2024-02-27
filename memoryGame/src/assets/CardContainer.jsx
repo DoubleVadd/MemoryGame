@@ -16,6 +16,7 @@ export default function CardContainer({sprites, setScore, gameLogic, gameSet, se
 
     // Keeps track of the current cards for the play session
     const [cards, setCards] = useState([])
+    const [visible, setVisibility] = useState(false)
 
     // Creates a deck of cards given new sprites array, and displays them as list items
     // The cards are shuffled before creating a new list to ensure change between renders
@@ -34,7 +35,10 @@ export default function CardContainer({sprites, setScore, gameLogic, gameSet, se
 
     // Set cards on every sprite update
     useEffect(() =>{
+        setVisibility(true)
+        console.log('setting cards')
         setCards(cardCreator(sprites))
+        setTimeout(()=>{setVisibility(false)}, 500)
     }, [sprites])
     
     
@@ -42,7 +46,7 @@ export default function CardContainer({sprites, setScore, gameLogic, gameSet, se
     
     return(
         <>
-            <ul className={cardStyle.cardContainer}>
+            <ul className={`${cardStyle.cardContainer} ${visible && cardStyle['invisible']}  ${!visible && cardStyle['visible']}`} >
                 {cards}
             </ul>
         </>

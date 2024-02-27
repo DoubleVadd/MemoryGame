@@ -35,7 +35,7 @@ export default function Header({gameSet, setScore,setSprites, gameLogic}){
                 3. repeat as many times as possible!
             </dialog>
 
-            <h1>MemoryDex</h1>
+            <h1>Memory<span style={{color : "red"}}>Dex</span></h1>
             <h2>Max Score: {gameLogic.getMaxScore()}</h2>
             <h2>Current Score: {gameLogic.getScore()}</h2>
 
