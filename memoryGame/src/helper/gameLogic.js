@@ -58,7 +58,6 @@ const gameLogic = () => {
         pokemonSprite = []
         pokemonDict = {}
         clickedPokemon = {}
-        generateNew()
     }
 
 
